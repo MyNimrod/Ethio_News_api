@@ -25,7 +25,28 @@ const newspapers = [
     name: 'bbc',
     address: 'https://www.bbc.com/news',
     base: 'https://www.bbc.com/'
+  },
+  {
+    name: 'nytimes',
+    address: 'https://www.nytimes.com/',
+    base: ''
+  },
+  {
+    name: 'cnn',
+    address: 'https://edition.cnn.com/',
+    base: ''
+  },
+  {
+    name: 'reuters',
+    address: 'https://www.reuters.com/',
+    base: ''
+  },
+  {
+    name: 'google',
+    address: 'https://news.google.com/home?hl=en-ET&gl=ET&ceid=ET:en',
+    base: ''
   }
+
 ]
 const articles = []
 
