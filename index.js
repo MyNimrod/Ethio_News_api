@@ -20,6 +20,11 @@ const newspapers = [
     name: 'Addis Standard',
     address: 'https://amharic.addisstandard.com/',
     base: ''
+  },
+  {
+    name: 'bbc',
+    address: 'https://www.bbc.com/news',
+    base: 'https://www.bbc.com/'
   }
 ]
 const articles = []
@@ -30,7 +35,7 @@ newspapers.forEach(newspaper => {
     const html = response.data
     const $ = cheerio.load(html)
 
-    $('a:contains("Ethiopia"), a:contains("ኢትዮጵያ"), a:contains("Addis Ababa"), a:contains("አዲስ አበባ")', html).each(function () {
+    $('a:contains("Ethiopia"), a:contains("ኢትዮጵያ"), a:contains("Addis Ababa"), a:contains("አዲስ አበባ"), a:contains("Amhara"), a:contains("አማራ"), a:contains("Oromia"), a:contains("ኦሮሚያ")፣ a:contains("Tigray"), a:contains("ትግራይ"), a:contains("ህወሓት"), a:contains("TPLF"), a:contains("ብልፅግና"), a:contains("ደቡብ"), a:contains("ጋምቤላ"), a:contains("Gambella"), a:contains("ባህርዳር"), a:contains("ሀዋሳ"), a:contains("ጅማ"), a:contains("ጎንደር"), a:contains("Gondar"), a:contains("Wollega"), a:contains("Mekelle"), a:contains("ወለጋ"), a:contains("መቀሌ"), a:contains("አፋር"), a:contains("ቤኒሻንጉል"), a:contains("Afar")', html).each(function () {
       const title = $(this).text()
       const url = $(this).attr('href')
 
