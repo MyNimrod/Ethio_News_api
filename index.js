@@ -1,10 +1,15 @@
+//Runs on localhost:8000/news
+
 const PORT = process.env.PORT || 8000;
 
+//declares the package constant variables
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const app = express();
 
+
+//website newspaper list
 const newspapers = [
   {
     name: 'VOA',
@@ -48,14 +53,18 @@ const newspapers = [
   }
 
 ]
+
+//variable that will hold the title and url to be pushed
 const articles = []
 
+//send http request to newspaper site
 newspapers.forEach(newspaper => {
   axios.get(newspaper.address)
   .then(response => {
     const html = response.data
     const $ = cheerio.load(html)
 
+//filter the received tags
     $('a:contains("Ethiopia"), a:contains("ኢትዮጵያ"), a:contains("Addis Ababa"), a:contains("አዲስ አበባ"), a:contains("Amhara"), a:contains("አማራ"), a:contains("Oromia"), a:contains("ኦሮሚያ")፣ a:contains("Tigray"), a:contains("ትግራይ"), a:contains("ህወሓት"), a:contains("TPLF"), a:contains("ብልፅግና"), a:contains("ደቡብ"), a:contains("ጋምቤላ"), a:contains("Gambella"), a:contains("ባህርዳር"), a:contains("ሀዋሳ"), a:contains("ጅማ"), a:contains("ጎንደር"), a:contains("Gondar"), a:contains("Wollega"), a:contains("Mekelle"), a:contains("ወለጋ"), a:contains("መቀሌ"), a:contains("አፋር"), a:contains("ቤኒሻንጉል"), a:contains("Afar")', html).each(function () {
       const title = $(this).text()
       const url = $(this).attr('href')
@@ -69,16 +78,19 @@ newspapers.forEach(newspaper => {
 })
 })
 
+//initial page
 app.get('/', (req, res) => {
   res.json('Welcome to My Ethiopian News API');
 });
 
+//send to express and json view
 app.get('/news', (req, res) => {
 
   res.json(articles)
 
 });
 
+//specific web newspaper
 app.get('/news/:newspaperId', async (req,res) => {
   const newspaperId = req.params.newspaperId
 
@@ -104,4 +116,5 @@ app.get('/news/:newspaperId', async (req,res) => {
 }).catch(err => console.log(err))
 })
 
+//server lisener
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
