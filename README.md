@@ -36,6 +36,16 @@ go to http://localhost:8000/news/specific_site to check news from specific site
 ```
 ![Output](https://drive.google.com/file/d/1KYRFPUOvYPIPETeXdp08ii9mYPkfyLkg/view?usp=drive_link)  
 
+## News Sites
+### Addis Standard
+### VOA
+### The Reporter
+### bbc
+### Reuters
+### CNN
+### Google
+### Nytimes
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
@@ -45,3 +55,4 @@ Please make sure to update tests as appropriate.
 
 ## Troubleshooting
 if for any case you see the output as a bunch of messed files, please be sure to install JSON Viewer Extension.
+
